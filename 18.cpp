@@ -8,20 +8,12 @@ Solution coded by:- Aniket Jain
 
 using namespace std;
 
-int findpivot(int *arr, int low, int high){
-    if(high < low)
-        return low;
-    if(high == low)
-        return low;
-    int mid = (high + low) / 2;
-    if(arr[mid] >= arr[0])
-        return findpivot(arr, mid+1, high);
-    return findpivot(arr, low, mid);
-}
-
 bool getpair(int *arr, int n, int sum){
-    int p = findpivot(arr, 0, n) - 1;
-    int l = p + 1;
+    int p;
+    for(p = 0; p < n - 1; p++)
+        if(arr[p] > arr[p+1])
+            break;
+    int l = (p + 1) % n;
     int h = p;
     while(l != h){
         if(arr[l] + arr[h] == sum)
