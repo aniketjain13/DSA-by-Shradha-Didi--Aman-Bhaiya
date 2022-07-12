@@ -20,51 +20,16 @@ int findpivot(int *arr, int low, int high){
 }
 
 bool getpair(int *arr, int n, int sum){
-    int p = findpivot(arr, 0, n);
-    int i, j;
-    if(p == 0){
-        i = 0;
-        j = n;
-        while(i<j){
-            if(arr[i]+arr[j] > sum){
-                j--;
-            }
-            else if(arr[i]+arr[j] < sum){
-                i++;
-            }
-            else{
-                return true;
-            }
-        }
-    }
-    else{
-        i = p;
-        j = p-1;
-        while(j >= 0){
-            if(arr[i]+arr[j] > sum){
-                j--;
-            }
-            else if(arr[i]+arr[j] < sum){
-                i++;
-            }
-            else{
-                return true;
-            }
-        }
-        if(j == -1){
-            j = n;
-            while(i<j){
-                if(arr[i]+arr[j] > sum){
-                    j--;
-                }
-                else if(arr[i]+arr[j] < sum){
-                    i++;
-                }
-                else{
-                    return true;
-                }
-            }
-        }
+    int p = findpivot(arr, 0, n) - 1;
+    int l = p + 1;
+    int h = p;
+    while(l != h){
+        if(arr[l] + arr[h] == sum)
+            return true;
+        else if(arr[l] + arr[h] < sum)
+            l = (l + 1) % n;
+        else
+            h = (n + h - 1) % n; 
     }
     return false;
 }
@@ -74,7 +39,7 @@ int main(){
     cout << "Enter the size of the array:- ";
     cin >> size;
     cout << "Enter the array:-\n";
-    int *arr = new int(size);
+    int *arr = new int[size];
     for(int i = 0; i < size; i++){
         cin >> arr[i];
     }
