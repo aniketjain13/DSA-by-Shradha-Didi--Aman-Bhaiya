@@ -8,7 +8,9 @@ Solution coded by:- Aniket Jain
 
 using namespace std;
 
-//For implementing queue using linked list
+//********************************************************************************
+//  TO IMPLEMENT QUEUE USING LINKED LIST
+//********************************************************************************
 class node{
     public:
     int val;
@@ -27,6 +29,9 @@ class node{
     }
 };
 
+//********************************************************************************
+//  TO IMPLEMENT QUEUE 
+//********************************************************************************
 class queue{
     public:
     node *front;
@@ -49,11 +54,15 @@ class queue{
         }
     }
     int del(){
+        if(front == nullptr)
+            return -1;
         node* q = front;
         front = front->next;
         return q->val;
     }
     int peek(){
+        if(front == nullptr)
+            return -1;
         return front->val;
     }
     bool isEmpty(){
@@ -63,7 +72,9 @@ class queue{
     }
 };
 
-//implementing stack using queue
+//********************************************************************************
+//  TO IMPLEMENT STACK USIGN TWO QUEUES 
+//********************************************************************************
 class MyStack {
     
     public:
@@ -114,10 +125,16 @@ int main(){
             s.push(h); 
             break;
         case 2:
-            cout << s.pop() << endl;
+            if(s.top() == -1)
+                cout << "Stack is empty\n";
+            else
+                cout << s.pop() << endl;
             break;
         case 3:
-            cout << s.top() << endl;
+            if(s.top() == -1)
+                cout << "Stack is empty\n";
+            else
+                cout << s.top() << endl;
             break;
         case 4:
             cout << boolalpha << s.empty() << endl; 
