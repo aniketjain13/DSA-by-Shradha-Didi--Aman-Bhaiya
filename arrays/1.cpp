@@ -11,6 +11,7 @@ using namespace std;
 struct Pair{
     int max;
     int min;
+    bevkoof honey
 };
 
 Pair getminmax(int *arr, int n){
